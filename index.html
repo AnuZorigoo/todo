@@ -10,16 +10,23 @@
     <div class="container">
       <div class="header">To-do List</div>
       <div class="addBox">
-        <input type="text" class="todo" placeholder="Enter text here" />
-        <button class="addButn">Add</button>
+        <input type="text" class="todo" placeholder="Add a new task..." />
+        <button class="add-btn">Add</button>
       </div>
-      <div class="filterBtn">
-        <button class="allbtn">All</button>
-        <button class="activebtn">Active</button>
-        <button class="cmpletebtn">Completed</button>
+      <div>
+        <button class="filter-btn" class="chosen">All</button>
+        <button class="filter-btn">Active</button>
+        <button class="filter-btn">Completed</button>
       </div>
-      <div class="list"></div>
+      <div class="list">
+        <p class="no-task">No tasks yet. Add one above!</p>
+      </div>
+      <div class="footer">
+        <p class="power">Powered by</p>
+        <p class="pine">Pinecone academy</p>
+      </div>
     </div>
+
     <script src="./index.js"></script>
   </body>
 </html>
