@@ -1,7 +1,7 @@
 const list = document.querySelector(".list");
-const input = document.querySelector(".todo");
+const input = document.querySelector("todo");
 const addBtn = document.querySelector(".add-btn");
-const buttons = document.querySelectorAll(".filter-btn");
+const buttons = document.querySelectorAll(".filter-button");
 
 let content = [];
 let type = "All";
@@ -10,23 +10,21 @@ let id = 1;
 
 const ListItem = (item) => {
   return `
-     <div class="item">
-          <input type="checkbox" class="checkbox" ${
-            item.isDone ? "checked" : ""
-          }/>
-          <p style="text-decoration: ${item.isDone ? "line-through" : "none"};">
-        ${item.text}
-      </p>
-          <button class="delete-btn">Delete</button>
-        </div>
-    `;
+    <div class="item">
+      <input class="checkbox" type="checkbox" ${item.isDone ? "checked" : ""} />
+      <p>${item.text}</p>
+      <button class="delete-btn">Delete</button>
+    </div>
+  `;
 };
+
 addBtn.addEventListener("click", () => {
   content.push({
     id: id,
     text: input.value,
     isDone: false,
   });
+
   id++;
 
   console.log(content);
@@ -39,7 +37,9 @@ buttons.forEach((btn, i) => {
     buttons.forEach((button) => {
       button.classList.remove("chosen");
     });
+
     btn.classList.add("chosen");
+
     if (i === 0) {
       type = "All";
     } else if (i === 1) {
@@ -47,6 +47,7 @@ buttons.forEach((btn, i) => {
     } else {
       type = "Completed";
     }
+
     render();
   });
 });
@@ -69,7 +70,7 @@ const render = () => {
 const addListeners = () => {
   const deleteBtns = document.querySelectorAll(".delete-btn");
 
-  deleteBtns.forEach((btn, i) => {
+  deleteBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       content = content.filter((item, index) => index !== i);
       render();
