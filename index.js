@@ -11,13 +11,13 @@ let id = 1;
 const ListItem = (item) => {
   return `
      <div class="item">
-          <input type="checkbox" class="checkbox" ${
-            item.isDone ? "checked" : ""
-          }/>
+          <input id= "${item.id}" type="checkbox" class="checkbox" ${
+    item.isDone ? "checked" : ""
+  }/>
           <p style="text-decoration: ${item.isDone ? "line-through" : "none"};">
         ${item.text}
       </p>
-          <button class="delete-btn">Delete</button>
+          <button id= "${item.id}"class="delete-btn">Delete</button>
         </div>
     `;
 };
@@ -28,6 +28,7 @@ addBtn.addEventListener("click", () => {
     isDone: false,
   });
   id++;
+  input.value = "";
 
   console.log(content);
 
@@ -69,9 +70,9 @@ const render = () => {
 const addListeners = () => {
   const deleteBtns = document.querySelectorAll(".delete-btn");
 
-  deleteBtns.forEach((btn, i) => {
+  deleteBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      content = content.filter((item, index) => index !== i);
+      content = content.filter((item) => item.id != btn.id);
       render();
     });
   });
