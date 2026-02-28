@@ -12,8 +12,8 @@ const ListItem = (item) => {
   return `
      <div class="item">
           <input id= "${item.id}" type="checkbox" class="checkbox" ${
-    item.isDone ? "checked" : ""
-  }/>
+            item.isDone ? "checked" : ""
+          }/>
           <p style="text-decoration: ${item.isDone ? "line-through" : "none"};">
         ${item.text}
       </p>
@@ -22,16 +22,24 @@ const ListItem = (item) => {
     `;
 };
 addBtn.addEventListener("click", () => {
+  const value = input.value.trim(); // space-ийг арилгана
+
+  // ✅ хоосон бол нэмэхгүй
+  if (value === "") {
+    input.focus();
+    return;
+  }
+
   content.push({
     id: id,
-    text: input.value,
+    text: value,
     isDone: false,
   });
+
   id++;
   input.value = "";
 
   console.log(content);
-
   render();
 });
 
